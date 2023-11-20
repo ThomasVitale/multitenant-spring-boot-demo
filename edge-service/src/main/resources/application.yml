@@ -1,0 +1,35 @@
+server:
+  port: 80
+
+spring:
+  application:
+    name: edge-service
+  
+  cloud:
+    gateway:
+      default-filters:
+        - SaveSession
+      routes:
+        - id: instrument-route
+          uri: ${INSTRUMENT_SERVICE_URL:http://localhost:8181}
+          predicates:
+            - Host={segment}.rock
+            - Path=/instruments/**
+          filters:
+            - AddRequestHeader=X-TenantId,{segment}
+
+logging:
+  pattern:
+    correlation: "%clr(tenantId=%X{tenantId:-}){faint} "
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      probes:
+        enabled: true
+      show-details: always
+      show-components: always

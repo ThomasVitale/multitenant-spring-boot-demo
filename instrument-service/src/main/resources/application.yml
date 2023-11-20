@@ -1,0 +1,37 @@
+server:
+  port: 8181
+
+spring:
+  application:
+    name: instrument-service
+
+logging:
+  pattern:
+    correlation: "%clr(tenantId=%X{tenantId:-}){faint} "
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      probes:
+        enabled: true
+      show-details: always
+      show-components: always
+
+multitenancy:
+  http:
+    header-name: X-TenantId
+  data:
+    default-schema: default
+
+instrument:
+  defaults:
+    favourite: "piano"
+  tenants:
+    dukes:
+      favourite: "guitar"
+    beans:
+      favourite: "drums"

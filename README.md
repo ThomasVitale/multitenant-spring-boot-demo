@@ -1,5 +1,7 @@
 # Spring Boot Multitenancy
 
+_For a more structured example, check my other repo: https://github.com/ThomasVitale/spring-boot-multitenancy._
+
 ## Stack
 
 * Java 21

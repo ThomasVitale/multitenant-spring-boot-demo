@@ -35,3 +35,10 @@ instrument:
       favourite: "guitar"
     beans:
       favourite: "drums"
+
+myapp:
+  tenants:
+    - identifier: tom
+      schema: tom1
+    - identifier: louise
+      schema: louise1
